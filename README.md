@@ -93,7 +93,8 @@ CREATE TABLE users (
 用户名	密码	邮箱	手机号	备注
 test123	test123	test123@example.com	13800138000	基础测试用户
 zhangsan	zhangsan123	zhangsan@example.com	13900139000	普通用户
-张三	zhangsan123	zhangsan123@example.com
+张三	zhangsan123	zhangsan123@example.com	13800138000	中文用户名测试
+
 
 测试物品数据示例
 登录 test123 账号后，你可能看到以下示例物品：
