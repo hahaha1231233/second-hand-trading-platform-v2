@@ -1,10 +1,5 @@
 # second-hand-trading-platform-v2
 一个基于Java Web的二手交易平台
-# second-hand-trading-platform
-
-一个基于 Java Web (Servlet/JSP) 的二手交易平台，支持用户发布“捡到的物品”、寻找丢失物品以及交易“多余物品”。
-
----
 
 ## 🏗️ 系统结构设计
 
@@ -19,7 +14,7 @@
 ### 项目架构 (MVC模式)
 
 表示层 (View):
-├── /WEB-INF/views/*.jsp # 所有JSP视图页面
+├── /WEB-INF/views/*.jsp# 所有JSP视图页面
 └── 使用JSTL标签库展示数据
 
 控制层 (Controller):
@@ -92,4 +87,22 @@ CREATE TABLE users (
     INDEX idx_username (username)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+🔑 测试可能用到的相关账号密码
+系统内置的测试账号（密码已加密，可直接用于登录测试）：
 
+用户名	密码	邮箱	手机号	备注
+test123	test123	test123@example.com	13800138000	基础测试用户
+zhangsan	zhangsan123	zhangsan@example.com	13900139000	普通用户
+张三	zhangsan123	zhangsan123@example.com
+
+测试物品数据示例
+登录 test123 账号后，你可能看到以下示例物品：
+
+标题：捡到的iPhone 13
+分类：捡到的物品
+地点：北京大学图书馆
+
+标题：闲置笔记本电脑
+分类：多余物品
+价格：4500.00元
+地点：北京市海淀区
