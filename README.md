@@ -87,13 +87,48 @@ CREATE TABLE users (
     INDEX idx_username (username)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+2. 物品表 (items)
+字段名	类型	约束	说明
+id	INT	PRIMARY KEY AUTO_INCREMENT	物品唯一ID
+title	VARCHAR(100)	NOT NULL	物品标题
+description	TEXT	NOT NULL	物品详细描述
+category	VARCHAR(50)	NOT NULL	分类：捡到的物品 或 多余物品
+status	VARCHAR(20)	DEFAULT ‘待交易’	物品状态
+price	DECIMAL(10,2)	DEFAULT 0.00	物品价格（元）
+location	VARCHAR(100)	NOT NULL	物品地点
+found_date	TIMESTAMP	DEFAULT CURRENT_TIMESTAMP	捡到/发现时间
+post_date	TIMESTAMP	DEFAULT CURRENT_TIMESTAMP	发布时间
+user_id	INT	NOT NULL, FOREIGN KEY	发布者ID，关联 users.id
+建表SQL：
+
+sql
+CREATE TABLE items (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(100) NOT NULL,
+    description TEXT NOT NULL,
+    category VARCHAR(50) NOT NULL,
+    status VARCHAR(20) DEFAULT ‘待交易’,
+    price DECIMAL(10,2) DEFAULT 0.00,
+    location VARCHAR(100) NOT NULL,
+    found_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    post_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    user_id INT NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+    INDEX idx_category (category),
+    INDEX idx_user_id (user_id),
+    INDEX idx_post_date (post_date)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
 🔑 测试可能用到的相关账号密码
 系统内置的测试账号（密码已加密，可直接用于登录测试）：
+
 
 用户名	密码	邮箱	手机号	备注
 test123	test123	test123@example.com	13800138000	基础测试用户
 zhangsan	zhangsan123	zhangsan@example.com	13900139000	普通用户
 张三	zhangsan123	zhangsan123@example.com	13800138000	中文用户名测试
+注意：以上密码为明文，用于测试登录。实际数据库中存储的
 
 
 测试物品数据示例
